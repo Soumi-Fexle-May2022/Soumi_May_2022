@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>Contact.Year_of_Class__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>College__c</members>
+        <members>Employee__c</members>
+        <members>Pan_Card__c</members>
+        <members>StudentSubject__c</members>
+        <members>Student__c</members>
+        <members>Subject__c</members>
+        <members>Teacher__c</members>
+        <members>Year_of_Class__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>College__c-en_US</members>
+        <members>Employee__c-en_US</members>
+        <members>Pan_Card__c-en_US</members>
+        <members>StudentSubject__c-en_US</members>
+        <members>Student__c-en_US</members>
+        <members>Subject__c-en_US</members>
+        <members>Teacher__c-en_US</members>
+        <members>Year_of_Class__c-en_US</members>
+        <name>CustomObjectTranslation</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>Employee__c-Employee Layout</members>
+        <members>Pan_Card__c-Pan Card Layout</members>
+        <members>StudentSubject__c-StudentSubject Layout</members>
+        <members>Student__c-Registrar Layout</members>
+        <members>Student__c-Teacher Layout</members>
+        <members>Subject__c-Subject Layout</members>
+        <members>Year_of_Class__c-Year of Class Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>Student__c.Registrar</members>
+        <members>Student__c.Teacher</members>
+        <name>RecordType</name>
+    </types>
+    <version>53.0</version>
+</Package>
