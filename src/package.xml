@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>ExampleOfMethodOverloading</members>
-        <members>MyMethodPassingClass</members>
+        <members>CustomerPurchaseOrder</members>
+        <members>EmployeePurchaseOrder</members>
+        <members>ExampleController</members>
+        <members>KeywordsController</members>
+        <members>ProcessPurchaseOrderController</members>
+        <members>PurchaseOrder</members>
+        <members>Subclass</members>
+        <members>SuperClass</members>
+        <members>testThis</members>
         <name>ApexClass</name>
     </types>
     <version>53.0</version>
