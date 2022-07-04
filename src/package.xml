@@ -2,11 +2,13 @@
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
         <members>CustomerPurchaseOrder</members>
+		<members>CustomReport</members>
         <members>EmployeePurchaseOrder</members>
         <members>ExampleController</members>
         <members>KeywordsController</members>
         <members>ProcessPurchaseOrderController</members>
         <members>PurchaseOrder</members>
+		<members>Report</members>
         <members>Subclass</members>
         <members>SuperClass</members>
         <members>testThis</members>
