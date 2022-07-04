@@ -11,4 +11,9 @@ public class CustomerPurchaseOrder implements PurchaseOrder {
     public Double discount() {
         return .05;  // Flat 5% discount
     }
+    public CustomerPurchaseOrder(){
+        List<PurchaseOrder> POs = new PurchaseOrder[] {};
+        List<CustomerPurchaseOrder> CPOs = new CustomerPurchaseOrder[]{};
+        POs = CPOs;
+    }
 }
