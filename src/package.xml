@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>Bulk_DMLController</members>
-        <members>DML_LearningController</members>
-        <members>DML_LearningController2</members>
+        <members>CountryMapController2</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>Account.MyExtID__c</members>
-        <name>CustomField</name>
+        <members>Country__c</members>
+        <members>District__c</members>
+        <members>State__c</members>
+        <name>CustomObject</name>
     </types>
     <version>53.0</version>
 </Package>
