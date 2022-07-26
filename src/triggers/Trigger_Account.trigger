@@ -1,11 +1,13 @@
 /*
- * 	Description		:	To understand trigger context variables w.r.t trigger events.
+ * 	Description		:	To understand trigger context variables w.r.t trigger events. And
+ *                      This trigger fires whenever an account is updated, it then deletes its related opportunities.
  * 
  *  Created By		:	Soumi Chakraborty
  * 
  * 	Created Date	:	20/07/2022
  * 
  * 	Revision Logs	: 	V_1.0 - Created By - Soumi Chakraborty - 20/07/2022
+ *                      V_1.1 - Modified By - Soumi Chakraborty - 26/07/2022 (Added After Update trigger)
  * */
 trigger Trigger_Account on Account (before Insert, before update, after insert, after update) {
     
@@ -48,5 +50,10 @@ trigger Trigger_Account on Account (before Insert, before update, after insert, 
     
     if(Trigger.isAfter){    
         System.debug('Checking in After Trigger Operations');
+        if(Trigger.isUpdate){
+            
+            //Deletes related opportunities of an updated account
+            AccountTriggerHandler.deleteRelatedOpps(Trigger.new);
+        }
     }
 }
