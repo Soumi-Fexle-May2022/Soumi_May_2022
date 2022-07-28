@@ -24,6 +24,13 @@ public class ContactTriggerHandler {
         for(Contact con : contactListNew != null ? contactListNew : contactListOld){
             setOfAccIds.add(con.AccountId);
         }
+        //Adding those Acc Ids which were in a contact record before an update
+        //So that we can update the fields of the old Parent Account of a Contact after an update
+        if(contactListOld !=null){
+            for(Contact con : contactListOld){
+                setOfAccIds.add(con.AccountId);
+            }
+        }
         List<AggregateResult> groupedResult =[SELECT AccountId, COUNT(Id) totConts FROM Contact WHERE AccountId IN: setOfAccIds
                                                 GROUP BY AccountId];
         Set<Id> IdOfContsFromResult = new  Set<Id>();      //This Id set excludes those ACC Ids that have no related contact                                   
@@ -48,6 +55,8 @@ public class ContactTriggerHandler {
             setOfAccToUpdate.add(ac);
         }
         listOfAccToUpdate.addAll(setOfAccToUpdate);
-        update listOfAccToUpdate;
+        if(listOfAccToUpdate.size()>0){
+            update listOfAccToUpdate;
+        }
     }
 }
