@@ -9,26 +9,20 @@
 * 
 * */
 public class OpportunityTriggerHelper {
-    Set<SObject> setOfAllRecordsToInsert = new Set<SObject>();
-    List<SObject> listOfAllRecordsToInsert = new List<SObject>();            
-    Map<String,SObject> mapOfAllRecordsToUpdate = new Map<String,SObject>();
-    Set<String> setOfNamesFromTagsOrHqToUpdate = new Set<String>();
-    Set<String> setOfUniqueSuccessInsOrUpRecNames=new Set<String>();
-    Set<String> setOfUniqueInserts = new Set<String>();
-    List<String> listOfDuplicateRecNames = new List<String>();
-    List<String> listOfInvalidRecNames = new List<String>();
-    String substr='';
-    List<Automobile_Sensor__c> fetchedSensorRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_Sensor__c];
-    List<Automobile_Presence_Sensor__c> fetchedPrSensorRec=[SELECT Name,Opportunity__c,Account__c FROM Automobile_Presence_Sensor__c];
-    List<Automobile_TDU__c> fetchedTduRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_TDU__c];
-    List<Automobile_Tag__c> fetchedTagRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_Tag__c];
-    List<SObject> fetchedRecFromAllObjs = new List<SObject>();
-    public OpportunityTriggerHelper(){
-        fetchedRecFromAllObjs.addAll(fetchedSensorRec);
-        fetchedRecFromAllObjs.addAll(fetchedPrSensorRec);
-        fetchedRecFromAllObjs.addAll(fetchedTduRec);
-        fetchedRecFromAllObjs.addAll(fetchedTagRec); 
-    }
+    public static Set<SObject> setOfAllRecordsToInsert = new Set<SObject>();
+    public static List<SObject> listOfAllRecordsToInsert = new List<SObject>();            
+    public static Map<String,SObject> mapOfAllRecordsToUpdate = new Map<String,SObject>();
+    public static Set<String> setOfNamesFromTagsOrHqToUpdate = new Set<String>();
+    public static Set<String> setOfUniqueSuccessInsOrUpRecNames=new Set<String>();
+    public static Set<String> setOfUniqueInserts = new Set<String>();
+    public static List<String> listOfDuplicateRecNames = new List<String>();
+    public static List<String> listOfInvalidRecNames = new List<String>();
+    public static String substr='';
+    public static List<Automobile_Sensor__c> fetchedSensorRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_Sensor__c];
+    public static List<Automobile_Presence_Sensor__c> fetchedPrSensorRec=[SELECT Name,Opportunity__c,Account__c FROM Automobile_Presence_Sensor__c];
+    public static List<Automobile_TDU__c> fetchedTduRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_TDU__c];
+    public static List<Automobile_Tag__c> fetchedTagRec =[SELECT Name,Opportunity__c,Account__c FROM Automobile_Tag__c];
+    public static List<SObject> fetchedRecFromAllObjs = new List<SObject>();
     
     /*
     *
@@ -36,9 +30,12 @@ public class OpportunityTriggerHelper {
     *               Return to Customer.
     *
     */
-    public void populateChildObjRecords(List<Opportunity> newOppsList, List<Opportunity> oldOppsList){  
-        for(Opportunity opp : newOppsList){  
-            //Refreshing the instance variables for each new opportunity-
+    public static void populateChildObjRecords(List<Opportunity> newOppsList, List<Opportunity> oldOppsList){  
+        for(Opportunity opp : newOppsList){ 
+            fetchedRecFromAllObjs.addAll(fetchedSensorRec);
+            fetchedRecFromAllObjs.addAll(fetchedPrSensorRec);
+            fetchedRecFromAllObjs.addAll(fetchedTduRec);
+            fetchedRecFromAllObjs.addAll(fetchedTagRec);
             setOfAllRecordsToInsert.clear();
             listOfAllRecordsToInsert.clear();            
             mapOfAllRecordsToUpdate.clear();
@@ -60,8 +57,9 @@ public class OpportunityTriggerHelper {
                     }
                     len=namesToEdit.length();
                     if(len>0){
-                        if(namesToEdit.charAt(len-1)==13)
+                        if(namesToEdit.charAt(len-1)==13){
                             namesToEdit=namesToEdit.substring(0,len-1);
+                        }
                     }
                     setOfUniqueSuccessInsOrUpRecNames.add(namesToEdit);
                     listOfRecNamesToInsert.add(namesToEdit);
@@ -72,7 +70,7 @@ public class OpportunityTriggerHelper {
                     listOfRecNamesToInsert.remove(index);
                 }
                 if(listOfRecNamesToInsert.size()>0){
-                	insertRecords(opp,listOfRecNamesToInsert); 
+                	OpportunityTriggerHelper.insertRecords(opp,listOfRecNamesToInsert); 
                 }
             }                  
             else if(opp.StageName=='Return To HQ'){
@@ -125,7 +123,7 @@ public class OpportunityTriggerHelper {
                 setOfUniqueSuccessInsOrUpRecNames.remove('');		//set contains names that exclude existing names
                 listOfRecNamesToInsert.addAll(setOfUniqueSuccessInsOrUpRecNames);
                 if(listOfRecNamesToInsert.size()>0){
-                	insertRecords(opp,listOfRecNamesToInsert);      //list contains names that exclude existing names
+                	OpportunityTriggerHelper.insertRecords(opp,listOfRecNamesToInsert);      //list contains names that exclude existing names
                 }
             }
             setOfUniqueSuccessInsOrUpRecNames.addAll(setOfNamesFromTagsOrHqToUpdate);  //Again adding excluded names to the set
@@ -137,7 +135,7 @@ public class OpportunityTriggerHelper {
         if(!mapOfAllRecordsToUpdate.isEmpty()){
             update mapOfAllRecordsToUpdate.values();		//Insert is Outside of all loops  
         }
-        emailOwnerAboutShipment(newOppsList);
+        OpportunityTriggerHelper.emailOwnerAboutShipment(newOppsList);
     }
     
     /*
@@ -145,7 +143,7 @@ public class OpportunityTriggerHelper {
     *   Purpose :   To insert related records of Opportunity when stage is in Shipped to Customer or Return to Customer.
     *               
     */
-    public void insertRecords(Opportunity opp,List<String> listOfRecNamesToInsert){
+    public static void insertRecords(Opportunity opp,List<String> listOfRecNamesToInsert){
         //Checking for duplicates before insertion-
         setOfUniqueInserts.addAll(listOfRecNamesToInsert);
         for(String eachName : listOfRecNamesToInsert){
@@ -209,7 +207,7 @@ public class OpportunityTriggerHelper {
     *   Purpose :   To send email to Opportunity owner when any successful/unsuccessful insertion or updation is made with details in table.
     *               
     */
-    public void emailOwnerAboutShipment(List<Opportunity> newOppsList){
+    public static void emailOwnerAboutShipment(List<Opportunity> newOppsList){
         try{
             List<Messaging.SingleEmailMessage> emailObjects= new List<Messaging.SingleEmailMessage>();
             String body='Sensor shipment process is completed. Please refer below mentioned details to get all'+
@@ -333,8 +331,9 @@ public class OpportunityTriggerHelper {
                 emailObj.setSubject(oppNew.Name+' + Shipment Details '+date.today().format());                
                 emailObj.setHtmlBody(body);
                 emailObjects.add(emailObj);
+                System.debug('Changed');
             }
-            Messaging.sendEmail(emailObjects);     
+            //Messaging.sendEmail(emailObjects);     
         }catch(Exception e){
             System.debug('Daily mailing limit is 15 , see error message-> '+e.getMessage());
         }
