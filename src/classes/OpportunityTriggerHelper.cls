@@ -333,7 +333,7 @@ public class OpportunityTriggerHelper {
                 emailObjects.add(emailObj);
                 System.debug('Changed');
             }
-            //Messaging.sendEmail(emailObjects);     
+            Messaging.sendEmail(emailObjects);     
         }catch(Exception e){
             System.debug('Daily mailing limit is 15 , see error message-> '+e.getMessage());
         }
