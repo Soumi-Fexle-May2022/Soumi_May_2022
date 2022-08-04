@@ -18,14 +18,21 @@ public class CountryMapLevel2Controller {
     public CountryMapLevel2Controller(String letter) {
         try{
             lt=letter+'%';
-            for(Country__c con :[SELECT Name FROM Country__c]){
-                for(State__c st: [SELECT Name FROM State__c WHERE Country__r.Name =: con.Name]){
-                    for(District__c dist: [SELECT Name FROM District__c WHERE State__r.Name =: st.Name]){
-                        districtList.add(dist.Name);
-                    }
-                    distList=districtList.clone();
-                    mapOfDistrictsWithState.put(st.Name, distList); 
-                    districtList.clear();              
+            List<Country__c> fetchedCountryList=[SELECT Name FROM Country__c];
+            List<State__c> fetchedStateList=[SELECT Name FROM State__c];
+            List<District__c> fetchedDistrictList=[SELECT Name FROM District__c];
+            for(Country__c con :fetchedCountryList){
+                for(State__c st: fetchedStateList){
+                    if(st.Name==con.Name){
+                        for(District__c dist: fetchedDistrictList){
+                            if(dist.Name==st.Name){
+                                districtList.add(dist.Name);
+                            }
+                        }
+                        distList=districtList.clone();
+                        mapOfDistrictsWithState.put(st.Name, distList); 
+                        districtList.clear();  
+                    }            
                 }
                 distsStateMap=mapOfDistrictsWithState.clone();
                 mapOfStatesWithCountry.put(con.Name,distsStateMap);
@@ -102,7 +109,7 @@ public class CountryMapLevel2Controller {
 
     /*
     *
-    *   Purpose :   Finds a combination of related Country, State, City which begins with "S" using DML
+    *   Purpose :   Finds a combination of related Country, State, City which begins with "S" using Query
     *
     */
     public void getCombinationStartsWith(String lt){
@@ -128,6 +135,7 @@ public class CountryMapLevel2Controller {
     public void getCombinationStartsWithUsingMap(String lt){
         try{
             Boolean found=false;
+            String conName;
             for(String con : mapOfStatesWithCountry.keySet()){
                 if(con.startsWith(lt)){
                     for(Map<String,List<String>> state_districts : mapOfStatesWithCountry.values()){
@@ -138,7 +146,7 @@ public class CountryMapLevel2Controller {
                                         if(dist.startsWith(lt)){
                                             System.debug(con+' -> '+state+' -> '+dist);
                                             found=true;
-                                            countryJSONGenerator(con);
+                                            conName=con;
                                         }
                                     }
                                 }
@@ -147,7 +155,12 @@ public class CountryMapLevel2Controller {
                     }
                 }
             }
-            if(found== false){System.debug('No Country-State-District combination was found');}
+            if(found== false){
+                System.debug('No Country-State-District combination was found');
+            }
+            else if(found==true && conName!= null){
+                countryJSONGenerator(conName);
+            }
         }catch(Exception e){
             System.debug('Error -> '+e.getMessage());
         }
