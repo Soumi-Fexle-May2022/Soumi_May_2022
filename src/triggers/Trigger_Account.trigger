@@ -23,7 +23,9 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             for(Account accRecNew: Trigger.new){
                 System.debug('Account -> '+accRecNew.Name+' has been inserted');
             }
-
+            AccountTriggerHandler.performDMlForBeforeEventOnNew(Trigger.new);
+            AccountTriggerHandler.validatePhoneNumField(Trigger.new);
+            AccountTriggerHandler.populateTypeAccToRevenue(Trigger.new);
         }
         //Before Update Trigger
         if(Trigger.isUpdate){
@@ -40,16 +42,22 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             }*/
 
             //Bulifying 
-            for(Account accRecNew: Trigger.new){
+            /*for(Account accRecNew: Trigger.new){
                 Account accRecOld = Trigger.oldMap.get(accRecNew.Id);
                 if(accRecNew.Type!= accRecOld.Type){
                     System.debug('***Type Value Changed***');
                     System.debug('For account '+accRecNew.Name+' ,type changed from '+accRecOld.Type+' to '+accRecNew.Type);
                 }
-                /*else{
+                else{
                     accRecNew.Type.addError('Custom trigger validation: Type must be changed');
-                }*/
-            }
+                }
+            }*/
+            AccountTriggerHandler.generateCustomValidationUsingTrigger(Trigger.new,Trigger.oldMap);
+            AccountTriggerHandler.performDMlForBeforeEventonNewAndOld(Trigger.new,Trigger.old);
+            AccountTriggerHandler.validatePhoneNumField(Trigger.new);
+            AccountTriggerHandler.populateTypeAccToRevenue(Trigger.new);
+            AccountTriggerHandler.populateTypeAccToRelatedOppAmount(Trigger.new);
+            AccountTriggerHandler.populateDiscountAccToRevenue(Trigger.new,Trigger.old);
         }
         if(Trigger.isDelete){
             System.debug('-------------------------------------------');            
@@ -64,6 +72,7 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');
             System.debug('Insert List ::: Trigger.New ' + Trigger.new);
             System.debug('Insert List ::: Trigger.old ' + Trigger.old);
+            AccountTriggerHandler.performDMlForAfterEvent(Trigger.new);
         }
         if(Trigger.isUpdate){
             System.debug('-------------------------------------------');            
@@ -71,7 +80,8 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('Update List ::: Trigger.old ' + Trigger.old);
 
             //Deletes related opportunities of an updated account
-            AccountTriggerHandler.deleteAccountRelatedOpps(Trigger.old, Trigger.oldMap);
+            //AccountTriggerHandler.deleteAccountRelatedOpps(Trigger.old, Trigger.oldMap);  //Commenting this as then it would conflict with the next trigger
+            AccountTriggerHandler.performDMlForAfterEventonNewAndOld(Trigger.new,Trigger.old);
         }
         if(Trigger.isDelete){
             System.debug('-------------------------------------------');            
