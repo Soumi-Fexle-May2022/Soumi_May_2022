@@ -11,8 +11,7 @@
 trigger OpportunityTrigger on Opportunity (after insert, after update) {
     if(Trigger.isAfter){
         if(Trigger.isInsert || Trigger.isUpdate){
-            OpportunityTriggerHelper helperObj= new OpportunityTriggerHelper();
-            helperObj.populateChildObjRecords(Trigger.new, Trigger.old);
+            OpportunityTriggerHelper.populateChildObjRecords(Trigger.new, Trigger.old);
         }
     }
 }
