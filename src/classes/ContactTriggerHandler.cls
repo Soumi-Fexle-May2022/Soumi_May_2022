@@ -12,6 +12,42 @@
 * 
 * */
 public class ContactTriggerHandler {
+    public static Boolean isTriggerRan = false;
+
+    /*
+    *
+    *   Purpose :   Puts Parent Account status into child contact status if child contact status is empty
+    *               and puts Grandparent Property status into child contact status if child contact status and parent account status is empty
+    *
+    */
+    public static void syncContactWithRelatedAccountAndProperty(List<Contact> contactListNew,List<Contact> contactListOld){
+        Set<Id> setOfAccountIds = new Set<Id>();
+        for(Contact con : contactListNew){
+            if(con.Status__c == null){
+                setOfAccountIds.add(con.AccountId);
+            }
+        }
+        Map<id,Account> accMap = new Map<id,Account>();
+        accMap.putAll([SELECT Id, Status__c,Property__c FROM Account WHERE Id IN: setOfAccountIds]);
+
+        Map<id,Property__c> propMap = new Map<id,Property__c>();
+        propMap.putAll([SELECT Id, Status__c FROM Property__c ]);
+
+        for(Contact con : contactListNew){
+            if(con.Status__c == null){
+                Account acc = accMap.get(con.AccountId);
+                if(acc.Status__c != null){
+                    con.Status__c = acc.Status__c;
+                }
+                else{
+                    Property__c prop=propMap.get(acc.Property__c);
+                    if(prop.Status__c != null){
+                        con.Status__c = prop.Status__c;
+                    }
+                }
+            }
+        }
+    }
 
     /*
     *
@@ -59,4 +95,20 @@ public class ContactTriggerHandler {
             update listOfAccToUpdate;
         }
     }
+
+    /*
+    *
+    *   Purpose :   Creates duplicate contacts for each user inserted contact from UI or anonymous window.
+    *               Main purpose is to check recursive triggers and way to stop it.
+    *
+    */
+    /*public static void createDuplicateContact(List<Contact> newConList){
+        List<Contact> dupContactsToInsert= new List<Contact>();
+        for(Contact con: newConList){
+            Contact con1 = new Contact();
+            con1.LastName='Dupicate Contact';
+            dupContactsToInsert.add(con1);
+        }
+        insert dupContactsToInsert;
+    }*/
 }

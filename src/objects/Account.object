@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <fields>
-        <fullName>Discount__c</fullName>
+        <fullName>Property__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
         <externalId>false</externalId>
-        <label>Discount</label>
-        <precision>3</precision>
+        <label>Property</label>
+        <referenceTo>Property__c</referenceTo>
+        <relationshipLabel>Accounts</relationshipLabel>
+        <relationshipName>Accounts</relationshipName>
         <required>false</required>
-        <scale>0</scale>
         <trackFeedHistory>false</trackFeedHistory>
-        <type>Percent</type>
+        <type>Lookup</type>
     </fields>
-    <validationRules>
-        <fullName>Check_Account_Type_Changed</fullName>
-        <active>false</active>
-        <errorConditionFormula>NOT( ISCHANGED( Type ) )</errorConditionFormula>
-        <errorDisplayField>Type</errorDisplayField>
-        <errorMessage>Custom Validation Rule:  Type must be changed</errorMessage>
-    </validationRules>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
 </CustomObject>
