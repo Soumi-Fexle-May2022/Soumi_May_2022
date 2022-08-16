@@ -1,5 +1,8 @@
 /*
- * 	Description		:	This trigger fires whenever an contact related to an account is added or removed, and changes the 
+ * 	Description		:	This trigger fires i)and puts Parent Account status into child contact status if child contact status is empty
+ *                      and puts Grandparent Property status into child contact status if child contact status and parent account status
+ *                      is empty whenever a child contact is created.
+ *                      ii)whenever an contact related to an account is added or removed, and changes the 
  * 						total number of contacts field in that Account accordingly
  * 
  *  Created By		:	Soumi Chakraborty
@@ -9,14 +12,20 @@
  * 	Revision Logs	: 	V_1.0 - Created By - Soumi Chakraborty - 26/07/2022
  * 
  * */
-trigger ContactTrigger on Contact (after insert,after update,after delete, after undelete) {
-	if(Trigger.isAfter){
-        //Increments total number of contacts field in Account obj when a related contact is inserted or undeleted.
-        //And decrements total number of contacts field in Account obj when a related contact is deleted.
+trigger ContactTrigger on Contact (before insert,before update,after insert,after update,after delete, after undelete) {
+    if(Trigger.isBefore){
+        if(Trigger.isInsert ||Trigger.isUpdate){
+            ContactTriggerHandler.syncContactWithRelatedAccountAndProperty(Trigger.New,Trigger.old);
+        }
+    }
+	else if(Trigger.isAfter){
         if(Trigger.isInsert ||Trigger.isUpdate || Trigger.isDelete || Trigger.isUndelete){
+            /*Recursive trigger example-
+            if(Trigger.isInsert && !ContactTriggerHandler.isTriggerRan){
+                ContactTriggerHandler.isTriggerRan= true;
+                ContactTriggerHandler.createDuplicateContact(Trigger.New);
+            }*/
             ContactTriggerHandler.populateNumOfContactsOnAccount(Trigger.New,Trigger.old);
-            //Trigger.old will be null for after insert and after undelete
-            //Trigger.old will not be null for after delete
         }
     }
 }
