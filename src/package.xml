@@ -12,6 +12,10 @@
         <members>StateTrigger</members>
         <name>ApexTrigger</name>
     </types>
+	<types>
+		<members>Globe</members>
+		<name>ContentAsset</name>
+	</types>
     <types>
         <members>Country_Map</members>
         <name>CustomApplication</name>
@@ -30,6 +34,16 @@
     <types>
         <members>Property__c</members>
         <name>CustomObject</name>
+    </types>
+	<types>
+        <members>Country__c</members>
+        <members>District__c</members>
+        <members>State__c</members>
+        <name>CustomTab</name>
+    </types>
+	<types>
+        <members>Country_Map_UtilityBar</members>
+        <name>FlexiPage</name>
     </types>
     <types>
         <members>State__c-State Layout</members>
