@@ -19,6 +19,8 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');
             System.debug('Insert List ::: Trigger.New ' + Trigger.new);
             System.debug('Insert List ::: Trigger.old ' + Trigger.old);
+            System.debug('Insert List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Insert List ::: Trigger.oldMap ' + Trigger.oldMap);
 
             for(Account accRecNew: Trigger.new){
                 System.debug('Account -> '+accRecNew.Name+' has been inserted');
@@ -32,6 +34,8 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');            
             System.debug('Update List ::: Trigger.New ' + Trigger.new);
             System.debug('Update List ::: Trigger.old ' + Trigger.old);
+            System.debug('Update List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Update List ::: Trigger.oldMap ' + Trigger.oldMap);
             
             /* Not Bulkified
             if(Trigger.New[0].Type != Trigger.old[0].Type){
@@ -63,6 +67,8 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');            
             System.debug('Delete List ::: Trigger.New ' + Trigger.new);
             System.debug('Delete List ::: Trigger.old ' + Trigger.old);
+            System.debug('Delete List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Delete List ::: Trigger.oldMap ' + Trigger.oldMap);
         }
     }
     
@@ -72,12 +78,16 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');
             System.debug('Insert List ::: Trigger.New ' + Trigger.new);
             System.debug('Insert List ::: Trigger.old ' + Trigger.old);
+            System.debug('Insert List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Insert List ::: Trigger.oldMap ' + Trigger.oldMap);
             AccountTriggerHandler.performDMlForAfterEvent(Trigger.new);
         }
         if(Trigger.isUpdate){
             System.debug('-------------------------------------------');            
             System.debug('Update List ::: Trigger.New ' + Trigger.new);
             System.debug('Update List ::: Trigger.old ' + Trigger.old);
+            System.debug('Update List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Update List ::: Trigger.oldMap ' + Trigger.oldMap);
 
             //Deletes related opportunities of an updated account
             //AccountTriggerHandler.deleteAccountRelatedOpps(Trigger.old, Trigger.oldMap);  //Commenting this as then it would conflict with the next trigger
@@ -87,11 +97,15 @@ trigger Trigger_Account on Account (before insert, before update,before delete, 
             System.debug('-------------------------------------------');            
             System.debug('Delete List ::: Trigger.New ' + Trigger.new);
             System.debug('Delete List ::: Trigger.old ' + Trigger.old);
+            System.debug('Delete List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Delete List ::: Trigger.oldMap ' + Trigger.oldMap);
         }
         if(Trigger.isUndelete){
             System.debug('-------------------------------------------');            
             System.debug('Undelete List ::: Trigger.New ' + Trigger.new);
             System.debug('Undelete List ::: Trigger.old ' + Trigger.old);
+            System.debug('Undelete List ::: Trigger.NewMap ' + Trigger.newMap);
+            System.debug('Undelete List ::: Trigger.oldMap ' + Trigger.oldMap);
         }
     }
 }
