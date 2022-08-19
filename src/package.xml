@@ -1,59 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>ContactTriggerHandler</members>
-        <members>DistrictTriggerHelper</members>
-        <members>StateTriggerHelper</members>
+        <members>AccountTriggerHandler</members>
         <name>ApexClass</name>
     </types>
     <types>
-        <members>ContactTrigger</members>
-        <members>DistrictTrigger</members>
-        <members>StateTrigger</members>
+        <members>Trigger_Account</members>
         <name>ApexTrigger</name>
-    </types>
-	<types>
-		<members>Globe</members>
-		<name>ContentAsset</name>
-	</types>
-    <types>
-        <members>Country_Map</members>
-        <name>CustomApplication</name>
-    </types>
-    <types>
-        <members>Account.Property__c</members>
-        <members>Account.Status__c</members>
-        <members>Contact.Status__c</members>
-        <members>Country__c.Country_Code__c</members>
-        <members>District__c.District_Pin_code__c</members>
-        <members>Property__c.Status__c</members>
-        <members>State__c.State_Code__c</members>
-        <members>State__c.State_JSON_Data__c</members>
-        <name>CustomField</name>
-    </types>
-    <types>
-        <members>Property__c</members>
-        <name>CustomObject</name>
-    </types>
-	<types>
-        <members>Country__c</members>
-        <members>District__c</members>
-        <members>State__c</members>
-        <name>CustomTab</name>
-    </types>
-	<types>
-        <members>Country_Map_UtilityBar</members>
-        <name>FlexiPage</name>
-    </types>
-    <types>
-        <members>State__c-State Layout</members>
-        <name>Layout</name>
-    </types>
-    <types>
-        <members>Country__c.All</members>
-        <members>District__c.All</members>
-        <members>State__c.All</members>
-        <name>ListView</name>
     </types>
     <version>53.0</version>
 </Package>
