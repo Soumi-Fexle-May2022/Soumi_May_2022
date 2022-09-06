@@ -1,0 +1,22 @@
+<!--
+Purpose         :   To display texts returned by apex method on click of a button
+Created By      :   Soumi Chakraborty
+Created Date    :   04/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 04/09/2022
+-->
+<template>
+    <lightning-card title="Return Apex Methods" icon-name="custom:custom14">
+        <div class="slds-var-m-around_medium" >
+            <lightning-button variant="brand" label="Click Here" title="To see the strings returned by apex method" 
+            onclick={invokeApexMethods} class="slds-var-m-left_small"></lightning-button>
+        </div>
+        <template if:true={text1}>
+            <div>
+                <p class="slds-var-m-left_small">Method1 result: {text1}</p>
+                <p class="slds-var-m-left_small">Method2 result: {text2}</p>
+                <p class="slds-var-m-left_small">Method3 result: {text3}</p>
+            </div>
+        </template>
+    </lightning-card>
+</template>
