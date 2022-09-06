@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>AsyncExecutionExample</members>
-        <members>AsyncExecutionExampleTest</members>
-        <members>MixedDMLFuture</members>
-        <members>MixedDMLFutureTest</members>
-        <members>OwnerReassignment</members>
-        <members>SearchAndReplace</members>
-        <members>TestClass</members>
-        <members>TestScheduledApexFromTestMethod</members>
-        <members>Util</members>
-        <name>ApexClass</name>
+        <members>LWC_Learning</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>LWC_app_page</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>LWC_Learning_UtilityBar</members>
+        <members>LWC_app_page</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>simpleCalculator</members>
+        <name>LightningComponentBundle</name>
     </types>
     <version>53.0</version>
 </Package>
