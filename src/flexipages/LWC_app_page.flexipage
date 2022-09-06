@@ -7,20 +7,32 @@
                 <identifier>c_simpleCalculator</identifier>
             </componentInstance>
         </itemInstances>
-        <name>region1</name>
-        <type>Region</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentName>textComponent</componentName>
                 <identifier>c_textComponent</identifier>
             </componentInstance>
         </itemInstances>
+        <name>region1</name>
+        <type>Region</type>
+    </flexiPageRegions>
+    <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>parentWebComponent</componentName>
+                <identifier>c_parentWebComponent</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>region2</name>
         <type>Region</type>
     </flexiPageRegions>
     <flexiPageRegions>
+        <itemInstances>
+            <componentInstance>
+                <componentName>parentLwc</componentName>
+                <identifier>c_parentLwc</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>region3</name>
         <type>Region</type>
     </flexiPageRegions>
