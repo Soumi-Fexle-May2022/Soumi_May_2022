@@ -1,0 +1,14 @@
+<!--
+Purpose         :   Creates an input field for user to enter percentage
+Created By      :   Soumi Chakraborty
+Created Date    :   06/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 06/09/2022
+-->
+
+<template>
+    <lightning-card icon-name="standard:employee" title="Child Card">
+        <lightning-input type="number" label="Enter percentage : " placeholder="enter %..." 
+        value={val} onchange={updateProgress} min="0" max="100" required></lightning-input>
+    </lightning-card>
+</template>

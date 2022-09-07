@@ -1,0 +1,19 @@
+<!--
+Purpose         :   Creates a number input field and displays entered number inside a lightning card.
+Created By      :   Soumi Chakraborty
+Created Date    :   06/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 06/09/2022
+-->
+
+<template>
+    <lightning-card icon-name="standard:employee" title="Child card called from Parent">
+        <div class="slds-var-m-around_medium">
+            <lightning-input type="number" label="Number : " placeholder="enter number..." value={val} onkeyup={changeHandler}></lightning-input>
+            Entered Number = {val}
+        </div>
+        <div class="slds-var-m-left_medium">
+            Message from parent to child = {myMessage}
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,18 @@
+<!--
+Purpose         :   Creates a progress bar that changes according to the percentage entered by user through child component
+Created By      :   Soumi Chakraborty
+Created Date    :   06/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 06/09/2022
+-->
+
+<template>
+    <lightning-card icon-name="standard:user" title="Parent Card">
+        <div class="slds-var-m-around_small">
+            <lightning-progress-bar value={proggressValue} size="large"></lightning-progress-bar>
+        </div>
+        <div class="slds-var-m-around_small">
+            <c-child-Lwc onupdate={updateProgress}></c-child-Lwc>
+        </div>
+    </lightning-card>
+</template>
