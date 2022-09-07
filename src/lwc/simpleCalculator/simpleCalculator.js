@@ -28,9 +28,8 @@ export default class SimpleCalculator extends LightningElement {
         else if(event.target.label=='Divide'){
             this.result = Number(this.num1) / Number(this.num2);
         }
-        this.template.querySelectorAll('lightning-input[data-id="reset"]').forEach(element =>{
-            element.value = null;
-        });
+        this.num1=null;
+        this.num2=null;
     }
     handleChangeNum1(event) {
         this.num1 = event.target.value;
