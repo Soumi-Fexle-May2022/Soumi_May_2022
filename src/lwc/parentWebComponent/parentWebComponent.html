@@ -1,0 +1,15 @@
+<!--
+Purpose         :   Displays a brand button which when clicked resets the input field of child using a reset method defined in child itself.
+                    Loads the child component inside it after the button.
+Created By      :   Soumi Chakraborty
+Created Date    :   06/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 06/09/2022
+-->
+
+<template>
+    <lightning-card icon-name="standard:user" title="From parent we are calling child's card">
+        <lightning-button variant="brand" label="Default Number" onclick={handleClick} class="slds-var-m-left_small"></lightning-button>
+        <c-child-web-component my-message={msg}></c-child-web-component>
+    </lightning-card>
+</template>
