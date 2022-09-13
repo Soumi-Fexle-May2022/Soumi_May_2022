@@ -14,14 +14,24 @@ Revision Log    :   V_1.0 Created - Soumi Chakraborty - 02/09/2022
         <div class="slds-var-m-around_medium">
           <lightning-input type="number" label="Second Number" placeholder="enter number..." value={num2} onchange={handleChangeNum2} required></lightning-input>
         </div>
-        <div class="slds-var-m-top_large slds-var-m-left_small" >
-            <lightning-button variant="brand" label="Add" title="To get the sum" onclick={computeResult} class="slds-var-m-left_small"></lightning-button>
-            <lightning-button variant="brand" label="Subtract" title="To get the difference" onclick={computeResult} class="slds-var-m-left_xx-large"></lightning-button>
-            <lightning-button variant="brand" label="Multiply" title="To get the product" onclick={computeResult} class="slds-var-m-left_xx-large"></lightning-button>
-            <lightning-button variant="brand" label="Divide" title="To get the division result" onclick={computeResult} class="slds-var-m-left_xx-large"></lightning-button>
-        </div>
+        <div class="c-container">
+          <lightning-layout horizontal-align="space">
+              <lightning-layout-item flexibility="auto" >
+                <lightning-button variant="brand" label="Add" title="To get the sum" onclick={computeResult}></lightning-button>
+              </lightning-layout-item>
+              <lightning-layout-item flexibility="auto">
+                <lightning-button variant="brand" label="Subtract" title="To get the difference" onclick={computeResult}></lightning-button>
+              </lightning-layout-item>
+              <lightning-layout-item flexibility="auto" >
+                <lightning-button variant="brand" label="Multiply" title="To get the product" onclick={computeResult}></lightning-button>
+              </lightning-layout-item>
+              <lightning-layout-item flexibility="auto" >
+                <lightning-button variant="brand" label="Divide" title="To get the division result" onclick={computeResult}></lightning-button>
+              </lightning-layout-item>
+          </lightning-layout>
+      </div>
         <div class="slds-var-m-vertical_large slds-var-m-left_medium">
           Result = {result}
         </div>
-      </lightning-card>    
+      </lightning-card>       
 </template>
