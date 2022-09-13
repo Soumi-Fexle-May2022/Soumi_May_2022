@@ -1,0 +1,29 @@
+<!--
+Purpose         :   Used to displays all fetched contacts in tile format
+Created By      :   Soumi Chakraborty
+Created Date    :   09/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 09/09/2022
+-->
+<template>
+    <lightning-card title="List Of All Contacts ">
+        Page width is = {flexipageRegionWidth}
+        <div class="slds-var-m-around_medium ">     
+            <div class={flexipageRegionWidth}> 
+                <lightning-layout multiple-rows>
+                    <template if:true={contacts.data}>
+                        <template for:each={contacts.data} for:item="contact">
+                            <lightning-layout-item size="12" small-device-size={small} medium-device-size={medium} large-device-size={large} key={contact.Id}>
+                                <lightning-tile label="Contact -" class="slds-box lgc-bg slds-var-m-horizontal_xxx-small" >                                
+                                        <p><b>First Name : </b>{contact.FirstName}</p>
+                                        <p><b>Last Name : </b>{contact.LastName}</p>
+                                        <p><b>Title : </b>{contact.Title}</p>                                
+                                </lightning-tile>
+                            </lightning-layout-item>
+                        </template>
+                    </template>                                    
+                </lightning-layout>
+            </div>
+        </div>
+    </lightning-card>    
+</template>

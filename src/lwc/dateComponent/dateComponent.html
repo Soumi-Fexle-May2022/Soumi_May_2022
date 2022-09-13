@@ -1,0 +1,21 @@
+<!--
+Purpose         :   Displays current date, time, week day and a greeting on click of a button using static resources
+                    and 3rd party JS library
+Created By      :   Soumi Chakraborty
+Created Date    :   08/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 08/09/2022
+-->
+
+<template>
+    <lightning-card title="Using Third Party Library">
+        <p class="slds-var-m-left_small"><strong>Current Date Is -</strong> {currentDate}</p>
+        <div class="slds-var-m-top_large slds-var-m-left_small" >
+            <lightning-button variant="brand" label="Greetings" title="To get a greetings wish for the day" 
+            onclick={handleClick} ></lightning-button>
+        </div>
+        <template if:true={showGreetings}>
+            <img src={niceDay} alt="Wishes"/>
+        </template>
+    </lightning-card>
+</template>
