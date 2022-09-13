@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
+        <members>ContactController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
         <members>LWC_Learning_UtilityBar</members>
         <members>LWC_app_page</members>
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>childLwc</members>
-        <members>childWebComponent</members>
-        <members>parentLwc</members>
-        <members>parentWebComponent</members>
+        <members>contactComponent</members>
+        <members>dateComponent</members>
         <members>simpleCalculator</members>
         <name>LightningComponentBundle</name>
     </types>
-    <version>53.0</version>
+    <version>55.0</version>
 </Package>

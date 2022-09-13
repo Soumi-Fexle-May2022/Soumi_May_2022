@@ -19,6 +19,12 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
+                <componentName>parentLwc</componentName>
+                <identifier>c_parentLwc</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
                 <componentName>parentWebComponent</componentName>
                 <identifier>c_parentWebComponent</identifier>
             </componentInstance>
@@ -29,8 +35,14 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>parentLwc</componentName>
-                <identifier>c_parentLwc</identifier>
+                <componentName>dateComponent</componentName>
+                <identifier>c_dateComponent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>contactComponent</componentName>
+                <identifier>c_contactComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>region3</name>

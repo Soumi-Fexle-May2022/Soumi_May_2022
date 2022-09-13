@@ -1,0 +1,10 @@
+/*
+ * Purpose         :   Defines the color that is used in the tile for displaying contacts
+ * Created By      :   Soumi Chakraborty
+ * Created Date    :   09/09/2022
+ * Current Version :   V1.0
+ * Revision Log    :   V_1.0 Created - Soumi Chakraborty - 09/09/2022
+ */
+.lgc-bg {
+    background-color: rgb(242, 242, 242);
+}
