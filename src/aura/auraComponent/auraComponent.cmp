@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <lightning:card title="Aura Hello World" iconName="custom:custom30" />
+    <c:lwcHelloWorld name="Earthling" />
+</aura:component>
