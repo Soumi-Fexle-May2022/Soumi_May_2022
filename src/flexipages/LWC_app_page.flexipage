@@ -13,6 +13,18 @@
                 <identifier>c_textComponent</identifier>
             </componentInstance>
         </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>lmsComponentA</componentName>
+                <identifier>c_lmsComponentA</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>lmsPublisherWebComponent</componentName>
+                <identifier>c_lmsPublisherWebComponent</identifier>
+            </componentInstance>
+        </itemInstances>
         <name>region1</name>
         <type>Region</type>
     </flexiPageRegions>
@@ -27,6 +39,24 @@
             <componentInstance>
                 <componentName>parentWebComponent</componentName>
                 <identifier>c_parentWebComponent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>lmsComponentX</componentName>
+                <identifier>c_lmsComponentX</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>lmsSubscriberWebComponent</componentName>
+                <identifier>c_lmsSubscriberWebComponent</identifier>
+            </componentInstance>
+        </itemInstances>
+        <itemInstances>
+            <componentInstance>
+                <componentName>auraComponent</componentName>
+                <identifier>c_auraComponent</identifier>
             </componentInstance>
         </itemInstances>
         <name>region2</name>
