@@ -1,0 +1,19 @@
+<!--
+Purpose         :   Displays the message sent by another component using LMS. It also has a unsubscribe button
+                    on click of which no messages will be received further.
+Created By      :   Soumi Chakraborty
+Created Date    :   13/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 13/09/2022
+-->
+<template>
+    <lightning-card title="LWC LMS Component X">
+        <div class="slds-var-m-around_medium">
+           <lightning-button label="unsubscribe" onclick={unsubscribeMessage}></lightning-button>
+        </div>
+        <div class="slds-var-m-around_medium">
+            Message Recieved <strong>{recievedMessage}</strong>
+        </div>
+
+    </lightning-card>
+</template>

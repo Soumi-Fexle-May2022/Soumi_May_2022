@@ -1,0 +1,31 @@
+<!--
+Purpose         :   Displays the contact that is clicked in another component using LMS
+Created By      :   Soumi Chakraborty
+Created Date    :   13/09/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 13/09/2022
+-->
+<template>
+    <lightning-card
+        title="LMSSubscriberWebComponent"
+        icon-name="custom:custom30"
+    >
+        <div class="slds-var-m-around_medium">
+            <template if:true={Picture__c}>
+                <img src={Picture__c} alt="Profile photo" />
+            </template>
+            <p>{Name}</p>
+            <p>{Title}</p>
+            <p>
+                <lightning-formatted-phone
+                    value={Phone}
+                ></lightning-formatted-phone>
+            </p>
+            <p>
+                <lightning-formatted-email
+                    value={Email}
+                ></lightning-formatted-email>
+            </p>
+        </div>
+    </lightning-card>
+</template>
