@@ -1,0 +1,67 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!--
+Purpose         :   Lets users choose a date range and checks if the date range is valid and displays the transactions , with pagination and sorting.
+                    Also the user can export that transaction details for the selected date range in form of CSV , PDF or can also email PDF to contact's email.
+Created By      :   Soumi Chakraborty
+Created Date    :   10/10/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 10/10/2022
+-->
+<template>
+    <lightning-quick-action-panel title="Quick Action Title">
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item flexibility="auto" >
+                <lightning-input type="Date" label ="Start Date:" value={startVal} onchange={handleChangeStartDt}></lightning-input>
+            </lightning-layout-item>
+            <lightning-layout-item flexibility="auto">
+                <lightning-input type="Date" label ="End Date:" value={endVal} onchange={handleChangeEndDt}></lightning-input>
+            </lightning-layout-item>
+        </lightning-layout><br/>
+        <lightning-button variant="brand" label="Show Transactions" class="slds-float_right" onclick={showTransactions}></lightning-button>
+        <p>{result}</p>
+        <template if:true={showStatement}>
+            <p><b>Transactions:-</b></p>
+            <lightning-datatable if:true={data}
+            key-field="id"
+            data={data}
+            columns={columns}
+            sorted-by={sortBy}
+            sorted-direction={sortDirection}
+            onsort={doSorting}
+            hide-checkbox-column="true">
+            </lightning-datatable><br/>
+            <lightning-layout>
+                <lightning-layout-item flexibility="auto">
+                  <lightning-button 
+                      label="Previous" 
+                      icon-name="utility:chevronleft" 
+                      onclick={previousHandler}>
+                  </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <b>Page {page} of {totalPage}</b>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button class="slds-float_right"
+                        label="Next" 
+                        icon-name="utility:chevronright" 
+                        icon-position="right"
+                        onclick={nextHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            <lightning-radio-group name="radioGroup"
+            label="Selected File Format"
+            options={options}
+            value={value}
+            type="radio"
+            onchange={handleRadioChange}>            
+            </lightning-radio-group>
+            <lightning-button variant="neutral" label="Download Report" onclick={downloadReport}></lightning-button>
+        </template>
+        <div slot="footer">
+        <lightning-button variant="brand" label="Cancel" onclick={closeAction} ></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+  </template>

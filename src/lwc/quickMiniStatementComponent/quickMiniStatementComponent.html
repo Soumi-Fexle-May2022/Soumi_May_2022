@@ -1,0 +1,37 @@
+<!-- sldsValidatorIgnore -->
+<!-- sldsValidatorIgnore -->
+<!--
+Purpose         :   Creates options for users to select the number of transactions they want to see on mini statement action button,
+                    and shows the users the selected number of transactions and the transactions are hyperlined so that they can refer to their details.
+Created By      :   Soumi Chakraborty
+Created Date    :   09/10/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 09/10/2022
+-->
+<template>
+  <lightning-quick-action-panel title="Quick Action Title">
+      <lightning-combobox
+      name="Entry"
+      label="Select the Number of Transaction Entries:"
+      value={value}
+      placeholder="Select number of entries"
+      options={options}
+      onchange={handleChange} >
+      </lightning-combobox>
+      <p>Selected number of entry is: {value}</p>
+      <template if:true={showMiniStatement}>
+         <p><b>Your mini statement:-</b></p>
+          <lightning-datatable if:true={data}
+          key-field="id"
+          data={data}
+          columns={columns}
+          hide-checkbox-column="true">
+          </lightning-datatable>
+      </template>
+    <div slot="footer">
+      <lightning-button variant="neutral" label="Cancel" onclick={closeAction} ></lightning-button>
+          &nbsp; &nbsp;
+      <lightning-button variant="brand" label="Ok" onclick={handleClick} ></lightning-button>
+    </div>
+  </lightning-quick-action-panel>
+</template>

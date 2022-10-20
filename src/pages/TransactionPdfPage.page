@@ -1,0 +1,110 @@
+<!--
+Purpose         :   To make a pdf page for the transaction details of a contact for a selected date range.
+Created By      :   Soumi Chakraborty
+Created Date    :   13/10/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 13/10/2022 
+-->
+<apex:page renderAs="advanced_pdf" controller="TransactionController" action="{!generatePdf}" docType="html-5.0" standardStylesheets="false"
+    showHeader="false" applyHtmlTag="false">
+
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            .tableClass {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+                border: 2px solid rgb(184, 182, 182);
+            }
+
+            .theHead {
+                background-color: #a8c0c0;
+                color: #fff;
+            }
+
+            .theHead,
+            .col{
+                border: 1px solid #bbb;
+                text-align: left;
+                padding: 7px;
+            }
+            
+            @page {
+                size: letter;
+                margin: 3%;
+                margin-top: 0.7cm;
+                @bottom-center {
+                    content: "Page " counter(page) " of " counter(pages);
+                }
+            }
+           
+            .even {
+                background-color: #dad8d848;
+                border: 2px solid rgba(206, 200, 200, 0.726);
+            }
+            
+            .page-break {
+                display: block;
+                page-break-after: always;
+            }
+            body {
+                font-family: Arial Unicode MS;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <p>
+            <b>Dear {!contact.Name} </b>
+        </p>
+        <p>
+            Your non-cancelled transactions from {!startDateString} to {!endDateString} for your Account number {!contact.Account_Number__c} is below :
+        </p>
+
+        <h2>Transaction Details</h2>
+
+        <apex:dataTable value="{!transactions}" var="txn" id="theTable" headerClass="theHead" cellpadding="10px" rowClasses="odd,even"
+            styleClass="tableClass">
+
+            <apex:column styleClass="col">
+                <apex:facet name="header">Name</apex:facet>
+                <apex:outputText value="{!txn.Name}" />
+                <apex:facet name="footer"></apex:facet>
+            </apex:column>
+
+            <apex:column styleClass="col">
+                <apex:facet name="header">Type</apex:facet>
+                <apex:outputText value="{!txn.Type__c}" />
+                <apex:facet name="footer"></apex:facet>
+            </apex:column>
+
+            <apex:column styleClass="col">
+                <apex:facet name="header">Amount</apex:facet>
+                <apex:outputText value="{!txn.Amount__c}" />
+                <apex:facet name="footer"></apex:facet>
+            </apex:column>            
+
+            <apex:column styleClass="col">
+                <apex:facet name="header">Date</apex:facet>
+                <apex:outputText value="{0,date,MM/dd/yyyy}">
+                    <apex:param value="{!txn.Transaction_Date__c}" />
+                </apex:outputText>
+
+                <apex:facet name="footer"></apex:facet>
+            </apex:column>
+
+            <apex:column styleClass="col">
+                <apex:facet name="header">Status</apex:facet>
+                <apex:outputText value="{!txn.Status__c}" />
+                <apex:facet name="footer"></apex:facet>
+            </apex:column>
+
+        </apex:dataTable> 
+
+    </body>
+</apex:page>
