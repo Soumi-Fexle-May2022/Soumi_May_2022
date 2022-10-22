@@ -1,0 +1,6 @@
+Dear {!Case.SuppliedName} ,
+    
+    Your Case No. {!Case.CaseNumber} has been resolved successfully.
+Feel free to contact us for anything else.
+
+Thank you.

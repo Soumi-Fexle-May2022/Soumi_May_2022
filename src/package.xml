@@ -1,25 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Package xmlns="http://soap.sforce.com/2006/04/metadata">
     <types>
-        <members>auraComponent</members>
-        <name>AuraDefinitionBundle</name>
+        <members>ContactTriggerHandler</members>
+        <members>ContactTriggerHandlerTest</members>
+        <members>EmailNotificationBatchClass</members>
+        <members>EmailNotificationBatchClassTest</members>
+        <members>EmailNotificationScheduler</members>
+        <members>TransactionController</members>
+        <members>TransactionControllerTest</members>
+        <members>TransactionEntryTriggerHelper</members>
+        <members>TransactionEntryTriggerHelperTest</members>
+        <members>TransactionSearchController</members>
+        <members>TransactionSearchControllerTest</members>
+        <name>ApexClass</name>
     </types>
     <types>
-        <members>LWC_Learning_UtilityBar</members>
-        <members>LWC_app_page</members>
-        <name>FlexiPage</name>
+        <members>SearchTransactionsVFPage</members>
+        <members>TransactionPdfPage</members>
+        <name>ApexPage</name>
     </types>
     <types>
-        <members>lmsComponentA</members>
-        <members>lmsComponentX</members>
-        <members>lmsPublisherWebComponent</members>
-        <members>lmsSubscriberWebComponent</members>
-        <members>lwcHelloWorld</members>
-        <name>LightningComponentBundle</name>
+        <members>ContactTrigger</members>
+        <members>TransactionEntryTrigger</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>Case.AssignEmailCaseToQueue</members>
+        <members>Case.Standard</members>
+        <members>Lead.AssignWebLeadsToSalesRep</members>
+        <members>Lead.Standard</members>
+        <name>AssignmentRule</name>
     </types>
     <types>
         <members>*</members>
-        <name>LightningMessageChannel</name>
+        <name>AssignmentRules</name>
+    </types>
+    <types>
+        <members>Case.NotifyCustomerOnCaseCreation</members>
+        <name>AutoResponseRule</name>
+    </types>
+    <types>
+        <members>Case</members>
+        <name>AutoResponseRules</name>
+    </types>
+    <types>
+        <members>BankImg</members>
+        <name>ContentAsset</name>
+    </types>
+    <types>
+        <members>Banking_Management_System</members>
+        <name>CustomApplication</name>
+    </types>
+    <types>
+        <members>Case.Transaction__c</members>
+        <members>Contact.Account_Number__c</members>
+        <members>Contact.Available_Balance__c</members>
+        <members>Contact.StatusPicklist__c</members>
+        <members>Contact.Transaction_Limit__c</members>
+        <members>Transaction_Entry__c.Amount__c</members>
+        <members>Transaction_Entry__c.Contact__c</members>
+        <members>Transaction_Entry__c.Status__c</members>
+        <members>Transaction_Entry__c.Transaction_Date__c</members>
+        <members>Transaction_Entry__c.Type__c</members>
+        <members>Transaction_Limit__c.Maximum_Debit_Allowed_per_Day__c</members>
+        <members>Transaction_Limit__c.Maximum_Debit_Allowed_per_Month__c</members>
+        <members>Transaction_Limit__c.Maximum_Debit_Allowed_per_Transaction__c</members>
+        <members>Transaction_Limit__c.Maximum_Transactions_Allowed_per_Day__c</members>
+        <members>Transaction_Limit__c.Maximum_Transactions_Allowed_per_Month__c</members>
+        <name>CustomField</name>
+    </types>
+    <types>
+        <members>Transaction_Entry__c</members>
+        <members>Transaction_Limit__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Transaction_Entry__c</members>
+        <members>Transaction_Limit__c</members>
+        <name>CustomTab</name>
+    </types>
+    <types>
+        <members>MyFolder/ByBcgNovJLQapIzbMBmDqKcphvLiDr2</members>
+        <name>Dashboard</name>
+    </types>
+    <types>
+        <members>Contact.CustomRuleToMaeContactEmailUnique</members>
+        <name>DuplicateRule</name>
+    </types>
+    <types>
+        <members>unfiled$public/Case_is_closed</members>
+        <name>EmailTemplate</name>
+    </types>
+    <types>
+        <members>Banking_Management_System_UtilityBar</members>
+        <name>FlexiPage</name>
+    </types>
+    <types>
+        <members>Email_On_Case_Resolve</members>
+        <name>Flow</name>
+    </types>
+    <types>
+        <members>Contact-Contact %28Banking%29 Layout</members>
+        <members>Transaction_Entry__c-Transaction Entry Layout</members>
+        <members>Transaction_Limit__c-Transaction Limit Layout</members>
+        <name>Layout</name>
+    </types>
+    <types>
+        <members>quickMiniStatementComponent</members>
+        <members>quickStatementComponent</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>Account.AllAccounts</members>
+        <members>Contact.AllContacts</members>
+        <members>Transaction_Entry__c.All</members>
+        <members>Transaction_Limit__c.All</members>
+        <name>ListView</name>
+    </types>
+    <types>
+        <members>Contact.CustomRuleToMakeContactEmailUnique_matching_rule</members>
+        <name>MatchingRule</name>
+    </types>
+    <types>
+        <members>Contact</members>
+        <name>MatchingRules</name>
+    </types>
+    <types>
+        <members>Bank_Management_Access</members>
+        <name>PermissionSet</name>
+    </types>
+    <types>
+        <members>Custom Profile%28Read_Create_only%29</members>
+        <name>Profile</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Queue</name>
+    </types>
+    <types>
+        <members>unfiled$public/Credit_Vs_Debit_per_Week_Irk</members>
+        <members>unfiled$public/Credit_vs_Debit_per_Month_Aak</members>
+        <members>unfiled$public/Monthly_Cash_Flow_Wg0</members>
+        <members>unfiled$public/Weekly_Cash_flow_Jjv</members>
+        <name>Report</name>
+    </types>
+    <types>
+        <members>Transaction_Entry__c.DebitAmountValidation</members>
+        <members>Transaction_Entry__c.TransactionDateCannotBeInPast</members>
+        <name>ValidationRule</name>
     </types>
     <version>55.0</version>
 </Package>

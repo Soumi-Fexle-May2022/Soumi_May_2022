@@ -18,9 +18,10 @@ public class ContactTriggerHandler {
     *
     *   Purpose :   Puts Parent Account status into child contact status if child contact status is empty
     *               and puts Grandparent Property status into child contact status if child contact status and parent account status is empty
+    *               and to validate Available Balance while Contact creation.
     *
     */
-    public static void syncContactWithRelatedAccountAndProperty(List<Contact> contactListNew,List<Contact> contactListOld){
+    public static void syncContactWithRelatedAccountAndPropertyAndCheckAvailableBaln(List<Contact> contactListNew,List<Contact> contactListOld){
         Set<Id> setOfAccountIds = new Set<Id>();
         for(Contact con : contactListNew){
             if(con.Status__c == null){
@@ -36,15 +37,25 @@ public class ContactTriggerHandler {
         for(Contact con : contactListNew){
             if(con.Status__c == null){
                 Account acc = accMap.get(con.AccountId);
-                if(acc.Status__c != null){
-                    con.Status__c = acc.Status__c;
-                }
-                else{
-                    Property__c prop=propMap.get(acc.Property__c);
-                    if(prop.Status__c != null){
-                        con.Status__c = prop.Status__c;
+                if(con.AccountId!=null)
+                {
+                    if(acc.Status__c != null){
+                        con.Status__c = acc.Status__c;
+                    }
+                    else if(acc.Property__c!=null){                        
+                        Property__c prop=propMap.get(acc.Property__c);
+                        if(prop.Status__c != null){
+                            con.Status__c = prop.Status__c;
+                        }                        
                     }
                 }
+            }
+            //Contact cannot be created or updated with balance less than Rs.3000
+            if(con.Available_Balance__c<3000 || con.Available_Balance__c==null){
+                con.Available_Balance__c.addError('Min. Baln. should be atleast Rs.3000');
+            }
+            if(con.Transaction_Limit__c==null){
+                con.Transaction_Limit__c.addError('Transaction Limit is Necessary');
             }
         }
     }
