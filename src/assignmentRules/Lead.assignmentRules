@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>AssignWebLeadsToSalesRep</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>samplestandarduser1@gmail.com</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.Status</field>
+                <operation>equals</operation>
+                <value>Open - Not Contacted</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+    <assignmentRule>
+        <fullName>Standard</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <assignedTo>soumi.chakraborty@fexle.com.training.staging</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.Country</field>
+                <operation>equals</operation>
+                <value>US,USA,United States,United States of America</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>soumi.chakraborty@fexle.com.training.staging</assignedTo>
+            <assignedToType>User</assignedToType>
+            <criteriaItems>
+                <field>Lead.Country</field>
+                <operation>notEqual</operation>
+                <value>US,USA,United States,United States of America</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

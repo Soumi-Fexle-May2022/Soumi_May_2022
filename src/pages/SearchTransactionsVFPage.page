@@ -1,0 +1,60 @@
+<!--
+Purpose         :   To make a search page so that user can quickly search transactions based on entered search field 
+                    value entered by user.
+Created By      :   Soumi Chakraborty
+Created Date    :   13/10/2022
+Current Version :   V1.0
+Revision Log    :   V_1.0 Created - Soumi Chakraborty - 13/10/2022 
+-->
+<apex:page controller="TransactionSearchController" sidebar="false" showHeader="false" lightningStyleSheets="true" docType="html-5.0">
+  	<apex:form >
+        <apex:slds />       
+        <div class='slds-grid slds-wrap'>        
+            <div class='slds-col slds-size--1-of-1 slds-small-size--1-of-1 slds-medium-size--1-of-1'>                	
+                <apex:pageblock >                                
+                    <apex:pageBlockSection >
+                        
+                        <apex:outputText ><b>Search Transaction Entries Here</b></apex:outputText>  
+                        
+                        <div class='slds-small-size--1-of-1'>     
+                            <apex:inputText label="Transaction Name : " value="{!nameEntered}"/>   
+                        </div>
+                        
+                        <div class='slds-small-size--1-of-1'>
+                            <apex:inputText label="Account Number : " value="{!accNum}"/>
+                        </div>
+                        
+                        <div class='slds-small-size--1-of-1'>
+                            <apex:input type="date" label="Start Date : " value="{!sdate}"/>
+                            <apex:input type="date" label="End Date : " value="{!edate}"/>
+                        </div>
+                        
+                        <div class='slds-small-size--9-of-12'>
+                            <apex:input type="number" label="Starting Amount : " value="{!startingAmt}"/>   
+                            <apex:input type="number" label="Ending Amount : " value="{!endingAmt}"/>
+                        </div>    
+                        
+                        <div class='slds-small-size--1-of-1'>
+                            <apex:selectList label="Select Status : " value="{!selectedStatus}" size="1">
+                                <apex:selectOption itemLabel="None" itemValue="none" />
+                                <apex:selectOption itemLabel="Pending" itemValue="pending" />
+                                <apex:selectOption itemLabel="Completed" itemValue="completed" />
+                                <apex:selectOption itemLabel="Cancelled" itemValue="cancelled" />
+                            </apex:selectList> 
+                        </div>
+                    </apex:pageBlockSection>
+                    <apex:commandButton value="Search" action="{!search_now}"/>
+                    <apex:pageBlockTable value="{!transactions}" var="txn">
+                        <apex:column value="{!txn.Name}"/>
+                        <apex:column value="{!txn.Type__c}"/>
+                        <apex:column value="{!txn.Amount__c}"/>
+                        <apex:column value="{!txn.Status__c}"/>
+                        <apex:column value="{!txn.Transaction_Date__c}"/>
+                        <apex:column value="{!txn.Contact__c}"/>
+                        <apex:column value="{!txn.Contact__r.Account_Number__c}"/>
+                    </apex:pageBlockTable>                             
+                </apex:pageblock>            
+            </div>
+        </div>
+    </apex:form>
+</apex:page>
