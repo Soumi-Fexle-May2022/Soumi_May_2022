@@ -15,7 +15,7 @@
 trigger ContactTrigger on Contact (before insert,before update,after insert,after update,after delete, after undelete) {
     if(Trigger.isBefore){
         if(Trigger.isInsert ||Trigger.isUpdate){
-            ContactTriggerHandler.syncContactWithRelatedAccountAndProperty(Trigger.New,Trigger.old);
+            ContactTriggerHandler.syncContactWithRelatedAccountAndPropertyAndCheckAvailableBaln(Trigger.New,Trigger.old);
         }
     }
 	else if(Trigger.isAfter){
