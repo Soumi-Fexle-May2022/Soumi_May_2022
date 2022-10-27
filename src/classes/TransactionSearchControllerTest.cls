@@ -51,8 +51,8 @@ private class TransactionSearchControllerTest {
         PageReference result1= myObj.search_now();
         myObj.nameEntered=null;
         
-        myObj.startingAmt='400.00';
-        myObj.endingAmt='500.00';
+        myObj.startingAmt=400.00;
+        myObj.endingAmt=500.00;
         PageReference result2= myObj.search_now();
         myObj.startingAmt=null;
         myObj.endingAmt=null;
