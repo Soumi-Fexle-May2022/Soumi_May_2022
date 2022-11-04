@@ -11,6 +11,6 @@ public with sharing class EmailNotificationScheduler implements Schedulable {
 
     public void execute(SchedulableContext sc) {
         
-        Database.executeBatch(new EmailNotificationBatchClass());
+        Database.executeBatch(new EmailNotificationBatchClass(),10);
     }
 }
